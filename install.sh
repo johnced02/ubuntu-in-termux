@@ -39,7 +39,9 @@ if [ "$first" != 1 ];then
     echo "decompressing ubuntu image"
     proot --link2symlink tar -xf $cur/ubuntu.tar.gz --exclude='dev'||:
     echo "fixing nameserver, otherwise it can't connect to the internet"
+    echo "domain http://ports.ubuntu.com/ubuntu-ports/pool/main/p/perl/perl_5.24.1-2ubuntu1_armhf.deb" > etc/resolv.conf
     echo "nameserver 8.8.8.8" > etc/resolv.conf
+    echo "nameserver 8.8.4.4" > etc/resolv.conf
     stubs=()
     stubs+=('usr/bin/groups')
     
@@ -101,7 +103,6 @@ rm ubuntu.tar.gz -rf
 cp resolv.conf ~/ubuntu-in-termux/etc
 echo "Fixing resolv.conf"
 mv ubuntu-in-termux .ubuntu
-cd ~ && cd .ubuntu
+cd ~/ && cd .ubuntu
 cp root /data/data/com.termux/files/usr/bin/root
-echo "You can now launch Ubuntu with the type "root" "script" 
-
+echo "You can now launch Ubuntu with the type "root"" 
