@@ -17,6 +17,6 @@ This is a script by which you can install Ubuntu in your termux application with
 6. Go to HOME folder: `cd ~`
 7. Download script: `git clone https://github.com/johnced02/ubuntu-in-termux.git`
 8. Go to script folder: `cd ubuntu-in-termux`
-9. Give execution permission: `chmod +x ubuntu.sh`
+9. Give execution permission: `chmod +x install.sh`
 10. Run script: `./install.sh`
 11. Now just start ubuntu using type: `root`
