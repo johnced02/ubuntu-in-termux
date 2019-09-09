@@ -114,12 +114,13 @@ echo "fixing shebang of $bin"
 termux-fix-shebang $bin
 echo "making $bin executable"
 chmod +x $bin
+chmod +x $start
 echo "removing image for some space"
 rm ubuntu.tar.gz -rf
 cp resolv.conf ~/ubuntu-in-termux/etc
-echo "Fixing resolv.conf"
-mv ubuntu-in-termux .ubuntu
-cd ~/ && cd .ubuntu
+echo "fixing resolv.conf"
+cd ~/ && mv ubuntu-in-termux .ubuntu
+cd .ubuntu
 cp root /data/data/com.termux/files/usr/bin/root
-echo "You can now launch Ubuntu using type 'root' script"
+echo "You can now launch Ubuntu with the type "root "script" 
 
