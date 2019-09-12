@@ -1,5 +1,5 @@
 # Installation ubuntu on `Termux`
-**`Author : XMODD3R`**
+`Author : XMODD3R`
 
 ## What's This?
 
