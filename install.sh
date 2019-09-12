@@ -94,33 +94,10 @@ else
 fi
 EOM
 
-start=root
-echo "writing executing script as root"
-cat > $root <<- EOM
-# Termux - Ubuntu
-# made script by Xmodd3r
-
-echo ""
-if [ -e usr/bin/sudo ];
-then
-cd &&  cd ~/.ubuntu && sudo bash start.sh
-else
-cd &&  cd ~/.ubuntu && bash start.sh
-fi
-exit
-OEM
-
 echo "fixing shebang of $bin"
 termux-fix-shebang $bin
 echo "making $bin executable"
 chmod +x $bin
-chmod +x $start
 echo "removing image for some space"
 rm ubuntu.tar.gz -rf
-cp resolv.conf ~/ubuntu-in-termux/etc
-echo "fixing resolv.conf"
-cd ~/ && mv ubuntu-in-termux .ubuntu
-cd .ubuntu
-cp root /data/data/com.termux/files/usr/bin/root
-echo "You can now launch Ubuntu with the type "root "script" 
-
+echo "" 
