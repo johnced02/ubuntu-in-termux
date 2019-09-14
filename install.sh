@@ -106,7 +106,6 @@ else
 fi
 EOM
 
-apt install python && 
 echo "Executing commands" && 
 termux-fix-shebang $bin && 
 chmod +x $bin && 
