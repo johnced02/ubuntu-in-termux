@@ -12,8 +12,8 @@
 echo ""
 if [ -e usr/bin/sudo ];
 then
-cd &&  cd ~/.ubuntu && clear && sudo bash start.sh
+cd && clear && sudo python /data/data/com.termux/files/usr/bin/login.py
 else
-cd &&  cd ~/.ubuntu && clear && bash start.sh
+cd && clear && python /data/data/com.termux/files/usr/bin/login.py
 fi
 exit
