@@ -6,6 +6,7 @@ This is a script by which you can install Ubuntu in your termux application with
 
 ## Updates
 `ADDED login password`
+
 `FULLY UPDATED TO UBUNTU 19.04 DISCO`
 
 ### Installation steps
