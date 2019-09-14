@@ -15,7 +15,7 @@ This is a script by which you can install Ubuntu in your termux application with
 3. Install proot: `apt  install proot -y`
 4. Install git: `apt install git -y`
 5. Install tar: `apt install tar -y`
-6  Install python: `apt install python -y`
+6.  Install python: `apt install python -y`
 7. Go to HOME folder: `cd ~/`
 8. Download script: `git clone https://github.com/johnced02/ubuntu-in-termux.git`
 9. Go to script folder: `cd ubuntu-in-termux`
