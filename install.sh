@@ -9,10 +9,11 @@ echo -e "    \e[34m██╔██╗ ██║╚██╔╝██║██║
 echo -e "   \e[35m██╔╝ ██╗██║ ╚═╝ ██║╚██████╔╝██████╔╝██████╔╝███████╗██║  ██║    "
 echo -e "   \e[36m╚═╝  ╚═╝╚═╝     ╚═╝ ╚═════╝ ╚═════╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝     "
 echo -e "\e[39m"
+
 folder=ubuntu-fs
 if [ -d "$folder" ]; then
     first=1
-    echo "skipping downloading"
+    echo "Skip downloading"
 fi
 if [ "$first" != 1 ];then
     if [ ! -f "ubuntu.tar.gz" ]; then
@@ -39,19 +40,19 @@ if [ "$first" != 1 ];then
 
 
         else
-            echo "unknown architecture"
+            echo "Unknown architecture"
             exit 1
         fi
     fi
     cur=`pwd`
     mkdir -p $folder
     cd $folder
-    echo "decompressing ubuntu image"
+    echo "Decompressing image"
     proot --link2symlink tar -xf $cur/ubuntu.tar.gz --exclude='dev'||:
     echo "fixing nameserver, otherwise it can't connect to the internet"
-    echo "domain http://ports.ubuntu.com/ubuntu-ports/pool/main/p/perl/perl_5.24.1-2ubuntu1_armhf.deb" > etc/resolv.conf
-    echo "nameserver 8.8.8.8" > etc/resolv.conf
-    echo "nameserver 8.8.4.4" > etc/resolv.conf
+    echo "domain http://ports.ubuntu.com/ubuntu-ports/pool/main/p/perl/perl_5.24.1-2ubuntu1_armhf.deb" >> etc/resolv.conf
+    echo "nameserver 8.8.8.8" >> etc/resolv.conf
+    echo "nameserver 8.8.4.4" >> etc/resolv.conf
     stubs=()
     stubs+=('usr/bin/groups')
     
@@ -64,9 +65,10 @@ if [ "$first" != 1 ];then
 
     cd $cur
 fi
+
 mkdir -p ubuntu-binds
 bin=start.sh
-echo "writing launch script"
+echo "Writing script"
 cat > $bin <<- EOM
 #!/bin/bash
 cd \$(dirname \$0)
@@ -104,11 +106,20 @@ else
 fi
 EOM
 
-echo "fixing shebang of $bin"
-termux-fix-shebang $bin
-echo "making $bin executable"
-chmod +x $bin
-echo "removing image for some space"
-rm ubuntu.tar.gz -rf
-echo ""
-chmod +x install2.sh 
+apt install python && 
+echo "Executing commands" && 
+termux-fix-shebang $bin && 
+chmod +x $bin && 
+rm ubuntu.tar.gz -rf && 
+cd ../ && 
+cd ~/ && 
+mv ubuntu-in-termux .ubuntu && 
+cd .ubuntu && 
+chmod +x * && 
+cp root /data/data/com.termux/files/usr/bin && 
+cp direct-ubuntu /data/data/com.termux/files/usr/bin &&
+rm -rf root direct-ubuntu  &&
+cp login.py /data/data/com.termux/files/usr/bin/ &&
+bash create-acc.sh
+
+
